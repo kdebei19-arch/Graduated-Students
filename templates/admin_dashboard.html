@@ -1,0 +1,14 @@
+
+{% extends "base.html" %}{% block title %}لوحة الإدارة{% endblock %}
+{% block content %}
+<section class="card">
+<div class="between"><div><h1>لوحة الإدارة</h1><p>عدد الطلبة: <b>{{count}}</b></p></div>
+<a class="btn gray" href="{{url_for('logout')}}">تسجيل خروج</a></div>
+<div class="upload"><h2>رفع ملف الطلبة</h2>
+<p>رفع ملف جديد يستبدل القائمة الحالية بالكامل.</p>
+<form method="post" enctype="multipart/form-data" action="{{url_for('admin_upload')}}">
+<input type="file" name="file" accept=".csv" required><button>رفع البيانات</button></form>
+<a href="{{url_for('sample')}}">تحميل نموذج CSV</a></div>
+<div class="table"><table><thead><tr><th>الرقم الجامعي</th><th>الاسم</th><th>التخصص</th><th>رقم الاصطفاف</th></tr></thead>
+<tbody>{% for r in rows %}<tr><td>{{r[0]}}</td><td>{{r[1]}}</td><td>{{r[2]}}</td><td>{{r[3]}}</td></tr>{% endfor %}</tbody></table></div>
+</section>{% endblock %}

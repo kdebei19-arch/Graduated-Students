@@ -1,0 +1,17 @@
+
+<!doctype html><html lang="ar" dir="rtl"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}بوابة أرقام الاصطفاف{% endblock %}</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head><body>
+<header><div class="wrap brand"><div class="mark">UJ</div><div>
+<b>الجامعة الأردنية - فرع العقبة</b><small>شعبة القبول والتسجيل</small>
+</div></div></header>
+<main class="wrap">
+{% with messages=get_flashed_messages(with_categories=true) %}
+{% for cat,msg in messages %}<div class="alert {{cat}}">{{msg}}</div>{% endfor %}
+{% endwith %}
+{% block content %}{% endblock %}
+</main>
+<footer>شعبة القبول والتسجيل - الجامعة الأردنية / فرع العقبة</footer>
+</body></html>
