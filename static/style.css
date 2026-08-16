@@ -10,6 +10,7 @@ label{display:grid;gap:7px;text-align:right;font-weight:bold}input{padding:13px;
 button,.btn{padding:13px 18px;border:0;border-radius:9px;background:var(--red);color:#fff;font-weight:bold;text-decoration:none;cursor:pointer}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}.grid div{padding:15px;border:1px solid var(--line);border-radius:10px}
 .grid span{display:block;color:#777;font-size:13px;margin-bottom:7px}.lineup{background:#fff3f5}.lineup strong{font-size:32px;color:var(--red)}
+.notes{margin-top:15px;padding:15px;background:#fffaf0;border:1px solid #ead9a7;border-radius:10px}
 .alert{padding:12px;border-radius:9px;margin:12px 0}.error{background:#fff0f1}.success{background:#edf9f0}.privacy{text-align:center;color:#777;font-size:13px}
 .narrow{max-width:520px;margin:auto}.between{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.gray{background:#555}
 .upload{border:1px dashed #aaa;border-radius:10px;padding:16px;margin:20px 0}.upload form{display:flex;gap:10px;flex-wrap:wrap;align-items:center}

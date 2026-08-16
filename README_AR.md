@@ -1,40 +1,60 @@
 
-# بوابة أرقام الاصطفاف - نسخة جاهزة لـ Render
+# Graduation Lineup Portal - Version 2
 
-## 1) إنشاء كلمة مرور الإدارة
-نفّذ محليًا:
-pip install Werkzeug
-python -c "from werkzeug.security import generate_password_hash; print(generate_password_hash('ضع-كلمة-مرور-قوية-هنا'))"
+## الجديد
+- رفع ملفات Excel بصيغة XLSX مباشرة.
+- استخراج آخر 4 أرقام من رقم الهاتف تلقائياً.
+- تخزين آخر 4 أرقام فقط في قاعدة البيانات.
+- إظهار يوم البروفة ووقت البروفة والملاحظات للطالب.
+- ما زال رفع CSV مدعوماً.
 
-انسخ الناتج كاملًا.
-
-## 2) الرفع إلى GitHub
-- أنشئ Repository جديدًا.
-- ارفع جميع ملفات المشروع إليه.
-
-## 3) النشر على Render
-- اختر New > Blueprint.
-- اربط مستودع GitHub.
-- Render سيقرأ render.yaml.
-- عند طلب ADMIN_PASSWORD_HASH ألصق قيمة الـ hash التي أنشأتها.
-- اضغط Deploy.
-
-بعد اكتمال النشر ستحصل على رابط عام ينتهي بـ onrender.com.
-
-## 4) صفحة الإدارة
-افتح:
-https://YOUR-SITE.onrender.com/admin
-
-## 5) ملف الطلبة
-CSV بالأعمدة:
-student_id,student_name,major,phone_last4,lineup_number,lineup_location,rehearsal_time,notes
-
-المطلوب إلزاميًا:
+## أعمدة Excel المطلوبة
+يمكن استخدام الأسماء الإنجليزية التالية:
 student_id
 student_name
 major
-phone_last4
+phone_number
 lineup_number
+rehearsal_day
+rehearsal_time
+notes
 
-## ملاحظة
-Render يدعم Flask عبر Python وGunicorn. النسخة المجانية من PostgreSQL تنتهي بعد 30 يومًا، لذا هي مناسبة للتجربة أو لاستخدام مؤقت قريب من موعد الحفل.
+أو العناوين العربية:
+الرقم الجامعي
+اسم الطالب
+التخصص
+رقم الهاتف
+رقم الاصطفاف
+يوم البروفة
+وقت البروفة
+ملاحظات
+
+الأعمدة الإلزامية:
+student_id / الرقم الجامعي
+student_name / اسم الطالب
+major / التخصص
+phone_number / رقم الهاتف
+lineup_number / رقم الاصطفاف
+
+الأعمدة الاختيارية:
+rehearsal_day / يوم البروفة
+rehearsal_time / وقت البروفة
+notes / ملاحظات
+
+## تحديث GitHub
+استبدل الملفات التالية في المستودع:
+- app.py
+- requirements.txt
+- templates/index.html
+- templates/admin_dashboard.html
+
+ويمكن الإبقاء على:
+- render.yaml
+- templates/base.html
+- templates/admin_login.html
+- static/style.css
+
+لكن رفع النسخة الكاملة المرفقة هو الأسهل.
+
+بعد Commit، سيبدأ Render Deploy تلقائياً. إذا لم يبدأ:
+Manual Deploy > Deploy latest commit

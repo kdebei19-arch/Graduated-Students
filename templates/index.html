@@ -1,16 +1,22 @@
 
-{% extends "base.html" %}{% block title %}الاستعلام عن رقم الاصطفاف{% endblock %}
+{% extends "base.html" %}
+{% block title %}الاستعلام عن رقم الاصطفاف{% endblock %}
 {% block content %}
 <section class="card hero">
 <h1>الاستعلام عن رقم الاصطفاف</h1>
-<p>يرجى إدخال البيانات التالية لعرض رقم الاصطفاف الخاص بك.</p>
+<p>يرجى إدخال الرقم الجامعي وآخر 4 أرقام من رقم الهاتف المسجل.</p>
 <form method="post">
-<label>الرقم الجامعي<input name="student_id" required inputmode="numeric" autocomplete="off"></label>
-<label>آخر 4 أرقام من رقم الهاتف<input name="phone_last4" required inputmode="numeric" maxlength="4" pattern="[0-9]{4}" autocomplete="off"></label>
-<button>عرض رقم الاصطفاف</button>
+<label>الرقم الجامعي
+<input name="student_id" required autocomplete="off">
+</label>
+<label>آخر 4 أرقام من رقم الهاتف
+<input name="phone_last4" required inputmode="numeric" maxlength="4" pattern="[0-9٠-٩]{4}" autocomplete="off">
+</label>
+<button>عرض بيانات البروفة</button>
 </form>
 {% if error %}<div class="alert error">{{error}}</div>{% endif %}
 </section>
+
 {% if result %}
 <section class="card">
 <h2>بيانات الطالب</h2>
@@ -18,11 +24,14 @@
 <div><span>الاسم</span><strong>{{result.student_name}}</strong></div>
 <div><span>التخصص</span><strong>{{result.major}}</strong></div>
 <div class="lineup"><span>رقم الاصطفاف</span><strong>{{result.lineup_number}}</strong></div>
-{% if result.lineup_location %}<div><span>مكان الاصطفاف</span><strong>{{result.lineup_location}}</strong></div>{% endif %}
-{% if result.rehearsal_time %}<div><span>موعد البروفة</span><strong>{{result.rehearsal_time}}</strong></div>{% endif %}
+{% if result.rehearsal_day %}<div><span>يوم البروفة</span><strong>{{result.rehearsal_day}}</strong></div>{% endif %}
+{% if result.rehearsal_time %}<div><span>وقت البروفة</span><strong>{{result.rehearsal_time}}</strong></div>{% endif %}
 </div>
-{% if result.notes %}<p class="notes"><b>ملاحظات:</b> {{result.notes}}</p>{% endif %}
+{% if result.notes %}
+<div class="notes"><b>ملاحظات:</b> {{result.notes}}</div>
+{% endif %}
 </section>
 {% endif %}
-<p class="privacy">لا تظهر بيانات الطالب إلا بعد مطابقة الرقم الجامعي وآخر 4 أرقام من الهاتف.</p>
+
+<p class="privacy">للحفاظ على الخصوصية، لا يتم إظهار البيانات إلا بعد مطابقة الرقم الجامعي مع آخر 4 أرقام من الهاتف.</p>
 {% endblock %}
